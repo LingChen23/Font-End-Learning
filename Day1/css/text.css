@@ -1,0 +1,7 @@
+.table{
+    border-collapse: collapse;
+    /*bgcolor:green;*/
+    width: 500px;
+    height: 500px;
+    border: 1px;
+}
