@@ -1,10 +1,87 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>边框</title>
+
+    <style>
+        .d1{
+            width:200px;
+            height: 200px;
+            /* 实线 */
+            border-top-style:solid;
+            border-top-color:red;
+            border-top-width:1px;
+
+            /* 点状线 */
+            border-left-style:dotted;
+            border-left-color:blue;
+            border-left-width:3px;
+
+            /* 虚线 */
+            border-bottom-style: dashed;
+            border-bottom-color: skyblue;
+            border-bottom-width:10px;
+
+
+            /* border-right-style:double;
+            border-right-color:green;
+            border-right-width:20px; */
+
+            /* 简写为 */
+            border-right:3px double green;
+
+
+          
+            
+        }
+
+
+        .d2{
+              /*如果四个边框的样式都相同可简写为： */
+            width:200px;
+            height: 200px;
+
+            border:10px solid red;
+        }
+
+
+        .d3{
+            width:300px;
+            height:300px;
+            border:1px dashed blue;
+            
+            /* border-top-left-radius: 10%;
+            border-bottom-left-radius: 20%;
+            border-bottom-right-radius: 30%;
+            border-top-right-radius: 40%; */
+
+
+            border-radius: 50%;
+            background-color: brown;
+        }
+
+
+        .i1{
+            border-radius: 10px;
+        }
+    </style>
 </head>
 <body>
-$END$
+    <div class="d1"></div>
+
+
+    <div class="d2"></div>
+
+
+    <div class="d3">
+
+    </div>
+
+
+
+    <input type="text" class="i1">
 </body>
 </html>

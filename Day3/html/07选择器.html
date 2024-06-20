@@ -1,10 +1,84 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* h1,p,h3{
+            color:red;
+        }
+
+
+        .u1 .l1{
+            color:green;
+            font-size:40px
+        }
+
+
+        .u2>.l1{
+            color:red;
+            font-size:40px
+        }
+
+        .d1>p{
+            color:#888999;
+            font-size:80px;
+        } */
+
+        /* 
+            后代选择器(以空格     分隔)与子元素选择器(以大于 > 号分隔） 区别
+            后代选择器会把下面所有的符合的元素都找出来  
+            子元素选择器找的是直接子元素    
+        
+        */
+
+
+        /* 下面相邻兄弟选择器 */
+        /*.p1+div{*/
+        /*    font-size:10px;*/
+        /*    border: 1px solid red;*/
+        /*}*/
+
+        /* 下面所有相邻兄弟选择器 */
+        .p1~div{
+            font-size:80px;
+        }
+    </style>
 </head>
 <body>
-$END$
+    <h1>中午着急</h1>
+    <p>卫生间被反锁了</p>
+    <h3>如何被反锁的有视频为证</h3>
+
+    <ul class="u1">
+        <li>item1</li>
+        <li class="l1">item1</li>
+        <li>item1</li>
+    </ul>
+
+
+    <ul class="u2">
+        <li>item2</li>
+        <li class="l1">item2</li>
+        <li>item2</li>
+    </ul>
+
+    <hr/>
+
+    <div class="d1">
+        <div>
+            <p>haha</p>
+        </div>
+        <p class="p1">这是一个段落</p>
+        <div>
+            <p>haha</p>
+        </div>
+        <div>
+            <p>haha</p>
+        </div>
+    </div>
+
 </body>
 </html>

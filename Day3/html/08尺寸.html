@@ -1,10 +1,42 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .d1{
+            width: auto;
+            height: auto;
+            background-color: green;
+        }
+        /*对于widt和height中的auto
+        width的与父节点相同
+        height与内容相同*/
+        .d2{
+            width: 300px;
+            height: 200px;
+            background-color: skyblue;
+            line-height: 80px;/*行距*/
+            max-height: 100px;
+        }
+    </style>
 </head>
 <body>
-$END$
+    <div style="width: 100px; height: 100px">
+        <div class="d1">
+            hahaha
+        </div>
+    </div>
+
+    <div class="d2">
+        <a href="">hehe</a>
+        <a href="">hehe</a>
+        <a href="">hehe</a>
+        <a href="">hehe</a>
+        <a href="">hehe</a>
+        <a href="">hehe</a>
+        <a href="">hehe</a>
+
+    </div>
 </body>
 </html>
