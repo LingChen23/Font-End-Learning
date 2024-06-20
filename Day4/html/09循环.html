@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>循环</title>
+    <style>
+        span{
+            width:100px;
+            height:30px;
+            display: inline-block;
+            border: 1px solid red;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    
+    <script>
+        // for(var i = 0; i < 10; i++) {
+        //     console.log("Hello World");
+        // }
+
+
+        // for(var i = 0; i < 10; i++) {
+        //     if(i == 2) {
+        //         continue;
+        //     }
+        //     console.log(i);
+        // }
+
+        // 求 1-100之间的和  
+        // var result = 0;
+        // for(var i = 1; i < 101; i++) {
+        //     result += i;
+        // }
+
+        // console.log(result);
+
+
+        //1-2+3-4+5.。。。。+99-100
+
+        // var result = 0;
+        // for(var i = 1; i < 101; i++) {
+        //     var temp = i;
+        //     if(temp % 2 == 0) {
+        //         temp *= -1;
+        //     }
+
+        //     result += temp;
+        // }
+
+        // console.log(result);
+
+        //99乘法表
+
+
+        for(var i = 1; i <= 9; i++) {
+            for(var j = 1; j <= i; j++) {
+                document.write("<span>" + i + " * " + j + " = " + i * j + "</span>");
+            }
+
+            document.write("<br/>");
+        }
+
+
+
+
+
+
+
+
+
+    </script>
+</body>
+</html>

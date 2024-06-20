@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>定位的优先级</title>
+    <style>
+        div{
+            width: 100px;
+            height: 100px;
+        }
+
+        .d1{
+            top:10px;
+            left: 10px;
+            background-color: red;
+            position: relative;
+            z-index: 3;
+        }
+        .d2{
+            top:30px;
+            left: 30px;
+            background-color: green;
+            position: absolute;
+            z-index: 2;
+            /*top: 30px;*/
+        }
+        .d3 {
+            top:40px;
+            left: 40px;
+            background-color: blue;
+            position: fixed;
+            z-index: 1;
+        }
+    </style>
+</head>
+<body>
+<div class="d1"></div>
+<div class="d2"></div>
+<div class="d3">
+</div>
+</body>
+</html>

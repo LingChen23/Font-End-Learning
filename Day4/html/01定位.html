@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>定位</title>
+    <style>
+        .d1{
+            width: 200px;
+            height: 200px;
+            background-color: red;
+        }
+        .d2{
+            width: 200px;
+            height: 200px;
+            background-color: green;
+            /*相对定位 相对于之前的位置*/
+            position: relative;
+            /*top: 30px;*/
+        }
+        .d3{
+            width: 200px;
+            height: 200px;
+            background-color: blue;
+            /*绝对定位 相对其已定位（relative absolute fixed）父元素，
+                如果没有父元素相对于html*/
+            position: absolute;
+            top: 100px;
+            left: 100px;
+        }
+        .d4{
+            width: 500px;
+            height: 500px;
+            border: 5px solid blue;
+            position: relative;
+        }
+        /*固定定位*/
+        .d5{
+            width: 50px;
+            height: 50px;
+            border: 5px solid pink;
+            top: 30px;
+            left: 30px;
+            background-color: #00FF00;
+            position: fixed;
+        }
+    </style>
+</head>
+<body>
+    <div class="d1"></div>
+    <div class="d2"></div>
+    <div class="d4">
+        <div class="d3"></div>
+    </div>
+    <div class="d5">
+
+    </div>
+</body>
+</html>
