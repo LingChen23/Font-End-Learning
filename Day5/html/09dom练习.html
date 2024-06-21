@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="text" id="txt1"/><br/>
+    <input type="text" id="txt2">
+    <input type="button" value="+" onclick="add()"><br/>
+    <input type="text" id="txt3">
+
+
+    <script>
+        function add() {
+
+            /*
+                1 文本框中如果输入的是非数字进行提示  
+                2 如果文本框中没有输入也进行提示
+
+
+            */
+
+            var val1 = document.getElementById("txt1").value;
+            if(!valiNum(val1)) {
+                alert("需要输入数字");
+                return;
+            }
+
+            if(!isEmpty(val1)) {
+                alert("不能为空");
+                return;
+            }
+            var val2 = document.getElementById("txt2").value;
+            if(!valiNum(val2)) {
+                alert("需要输入数字");
+                return;
+            }
+
+            if(!isEmpty(val2)) {
+                alert("不能为空");
+                return;
+            }
+           
+            var n1 = parseInt(val1);
+            var n2 = parseInt(val2);
+            var val3 = n1 + n2;
+            document.getElementById("txt3").value = val3;
+        }
+
+
+
+        function valiNum(val) {
+            console.log(typeof val);
+            if(!isNaN(val)) {
+                return true;
+            }
+            return false;
+        }
+
+
+        function isEmpty(val) {
+            if(val != '') {
+                return true;
+            }
+
+            return false;
+        }
+    </script>
+    
+</body>
+</html>

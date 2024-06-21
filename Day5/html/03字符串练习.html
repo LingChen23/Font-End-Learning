@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+       /*
+        abcdabcdabe  求该字符串中有多少组重复的字符
+        */
+
+        var str = "abcabcdeabaaaadddddaaabbba";
+        var index = 0;
+        for(var i = 0; i < str.length; i++) {
+            var c = str.charAt(i);
+            //向前进行比较  判断该字符是否已经被比较过了
+            var flag = true;
+            for(var k = i - 1; k >= 0; k--) {
+                if(c == str.charAt(k)) {
+                    //之前已经出现过了
+                    flag = false;
+                }
+            }
+            if(flag) {
+                for(var j = i + 1; j < str.length; j++) {
+                if(c == str.charAt(j)) {
+                    index++;
+                    break;
+                }
+             }
+            }
+            
+        }
+
+        console.log(index);
+
+       var str1 = 'abccdaadadaasdadffaaa'
+       var hash = []
+
+       for (var i = 0; i < str1.length; i++) {
+           if (isNaN(hash[str1[i]])) {
+               hash[str1[i]] = 0
+           }
+           ++hash[str1[i]]
+       }
+       console.log(hash)
+
+    </script>
+</body>
+</html>

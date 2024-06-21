@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>事件</title>
+    <style>
+        .d1{
+            width:200px;
+            height: 200px;
+            background-color: green;
+        }
+    </style>
+</head>
+<body>
+
+    <button onclick="f1()">按钮</button>
+    <button ondblclick="f2()">双击事件</button>
+
+
+    <div class="d1"  onmouseenter="f3()" onmouseleave="f4()"></div>
+
+
+    <input type="text" onkeydown="f5()">
+
+    <input type="text" onblur="f6()" onfocus="f7()">
+
+    <input type="text" onchange="f8()">
+
+    <script>
+        function f1() {
+            alert(123);
+        }
+
+        function f2() {
+            alert("双击事件");
+        }
+
+
+        function f3() {
+            console.log("鼠标进入。。。");
+        }
+
+        function f4() {
+            console.log("鼠标离开。。。");
+        }
+
+        function f5() {
+            console.log(event.keyCode);
+           if(event.keyCode == 49) {
+                console.log("1被按下");
+           }
+        }
+
+        function f6() {
+            console.log("失去焦点");
+        }
+
+        function f7() {
+            console.log("获取焦点");
+        }
+
+
+        function f8() {
+            console.log("当内容发生改变的时候会触发该事件");
+        }
+
+    </script>
+</body>
+</html>

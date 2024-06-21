@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<input type="button" value="+" onclick="addText()" id="txt1"/><br/>
+<input type="text" id = "txt"/><br/>
+<input type="button" value="-" onclick="subText()" id="txt2"/><br/>
+
+<script>
+    var num = document.getElementById(txt);
+    function addText(){
+        var num = parseInt(document.getElementById("txt").value);
+        if(num < 0){
+            num = Math.abs(num);
+        }
+        document.getElementById("txt").value = num;
+    }
+
+    function subText() {
+        var num = parseInt(document.getElementById("txt").value);
+        if(num > 0){
+            num -= 2*num;
+        }
+        document.getElementById("txt").value = num;
+    }
+</script>
+</body>
+</html>

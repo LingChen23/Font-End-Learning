@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <script>
+        /*
+       * 练习；
+       *   1.如果有一个网站
+       *       例如：www.baidu.com 获取baidu
+       *   2.有一个字符串
+       *       例如：abcderadfa 把其中的"a"换成"*"
+       * */
+
+        var strss = "www.baidu.com";
+        var arr = strss.split(".");
+        var statrt = strss.indexOf(".");
+        var end = strss.lastIndexOf(".");
+        console.log(arr[1]);
+        var content = strss.substring(statrt, end);
+
+        var strss1 = "abcderadfa";
+        var result = strss1.replace(/a/g,"*");
+        console.log(result);
+
+        var arr1 ="";
+        var index = 0;
+        for(var i = 0;i < strss1.length; i++){
+            // if(strss1[i] == "a"){
+            //     arr1 += "*";
+            //     continue;
+            // }
+            // arr1 += strss1[i];\
+            if(strss1.indexOf("a") != -1){
+                index++;
+            }
+            strss1 = strss1.replace("a","*");
+        }
+        console.log(strss1);
+        console.log(index);
+
+
+
+    </script>
+
+</head>
+<body>
+
+
+</body>
+</html>

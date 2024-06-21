@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <script>
+        var arr = [12, 23, 14, 2, 2];
+        //创建数组对象
+        var arr1 = new Array();
+        arr1.push(23);
+        arr1.push(12);
+        arr1.push(56);
+        arr1.push(2);
+        console.log(arr1);
+
+        //every
+        var flag = true;
+        for(var i = 0; i < arr1.length; i++){
+            if(arr1[i] < 10){
+                flag = false;
+            }
+        }
+        if(!flag){
+            console.log("不是都大于10");
+        }
+        console.log(flag);
+        var flag1 = arr1.every(function (e,num) {
+            return e > 10;
+        })
+        console.log(flag1);
+
+        //filter
+        var arr2 = arr1.filter(function (e) {
+            return e>50;
+        })
+        console.log(arr2);
+    </script>
+</head>
+<body>
+
+</body>
+</html>

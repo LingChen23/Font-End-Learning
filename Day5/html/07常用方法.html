@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    var a = 12;
+    var b = "abc";
+
+    function f() {
+
+    }
+
+   // var arr = [1,2,34]
+    var arr = new Array();
+
+    console.log(typeof a);
+    console.log(typeof b);
+    console.log(typeof f);
+    console.log(typeof arr);
+
+    //判断一个变量是否为数字 isNaN(is not a number)
+    console.log(!isNaN(a));
+
+    //字符串->数字
+    var str = "123";
+    var num = parseInt(str);
+    console.log(typeof num);
+
+    var str1 = "123.4"
+    var n = parseFloat(str1);
+    console.log(n);
+
+    var aa = "asa";
+    console.log(typeof aa == 'number');
+
+    var bb = null;
+    console.log(typeof bb);
+
+    var cc;
+    console.log(cc);
+
+    console.log(null == undefined);
+    console.log(1 === '1'); //==比较值 ===不但比较值，还比较类型
+</script>
+</body>
+</html>
