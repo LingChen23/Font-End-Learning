@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <script>
+        var str = "Hello World";
+        var len = str.length
+        console.log(len);
+
+        //获取对应索引处的字符
+        console.log(str.charAt(1));
+
+        //连接字符串
+        var str1 = str.concat("haha")
+        console.log(str1);
+        console.log(str);
+
+        //获取某个字符对应的索引
+        var index = str.indexOf("o");
+        console.log(index);
+
+        index = str.indexOf("o", 5);
+        console.log(index);
+
+        //获取某个字符对应的索引 从后面向前查询
+        index = str.lastIndexOf("o");
+
+        //替换
+        var str2 = str.replace("o", "*");
+        console.log(str2);
+
+        //字符串拆分
+        var s = "a, b, c, d, ";
+        var a = s.split(",");
+        console.log(a);
+
+        //字符串截取
+        console.log(str.substring(1, 6))    //[start, end)
+
+        //大写转小写
+        var s1 = str.toLowerCase();
+        console.log(s1);
+
+        //小写转大写
+        var s2 = str.toUpperCase();
+        console.log(s2);
+
+        //去除前后空格
+        var ss = "   hahaha  ";
+        console.log(ss);
+        ss1 = ss.trim();
+        console.log(ss1);
+
+        /*
+        * 练习；
+        *   1.如果有一个网站
+        *       例如：www.baidu.com 获取baidu
+        *   2.有一个字符串
+        *       例如：abcderadfa 把其中的"a"换成"*"
+        * */
+
+        var strss = "www.baidu.com";
+        var arr = strss.split(".");
+        console.log(arr[1]);
+
+        var strss1 = "abcderadfa";
+        var arr1 ="";
+        for(var i = 0;i < strss1.length; i++){
+            if(strss1[i] == "a"){
+                arr1 += "*";
+                continue;
+            }
+            arr1 += strss1[i];
+        }
+        console.log(arr1);
+    </script>
+</head>
+<body>
+
+</body>
+</html>
