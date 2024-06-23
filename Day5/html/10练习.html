@@ -6,25 +6,37 @@
 </head>
 <body>
 <input type="button" value="+" onclick="addText()" id="txt1"/><br/>
-<input type="text" id = "txt"/><br/>
+<input type="text" id = "txt" onmouseleave="f()"/><br/>
 <input type="button" value="-" onclick="subText()" id="txt2"/><br/>
 
 <script>
     var num = document.getElementById(txt);
     function addText(){
         var num = parseInt(document.getElementById("txt").value);
-        if(num < 0){
-            num = Math.abs(num);
+        if(num < 20){
+            num ++
+        }else{
+            alert("数字太大了！");
         }
         document.getElementById("txt").value = num;
     }
 
     function subText() {
         var num = parseInt(document.getElementById("txt").value);
-        if(num > 0){
-            num -= 2*num;
+        if(num > 1) num --;
+        else{
+            alert("数字太小了！");
         }
         document.getElementById("txt").value = num;
+    }
+
+    function f(){
+        var num =parseInt(document.getElementById("txt").value);
+        if(num > 20){
+            document.getElementById("txt").value = 20;
+        }else if(num < 1){
+            document.getElementById("txt").value = 1;
+        }
     }
 </script>
 </body>

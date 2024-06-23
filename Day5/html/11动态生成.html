@@ -5,6 +5,28 @@
     <title>Title</title>
 </head>
 <body>
+<input type="text" id = "txt" onblur="f()"/><br/>
+<script>
+    function f(){
+        var num = parseInt(document.getElementById("txt").value);
+        f2(num);
+    }
+
+    function f2(num){
+        for(var i = 1; i <= num; i++){
+            for(var a = num; a > i; a--){
+                document.write("<span style = 'display: inline-block; width: 20px; height: 20px; background-color: white; margin-left: 5px;margin-top: 5px'></span>");
+            }
+
+            for(var j = 1; j <= 2 * i - 1; j++){
+                document.write("<span style = 'display: inline-block; width: 20px; height: 20px; background-color: red; margin-left: 5px;margin-top: 5px'></span>");
+            }
+
+            document.write("<br/>");
+        }
+    }
+</script>
+
 
 </body>
 </html>

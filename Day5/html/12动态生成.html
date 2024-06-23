@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .white-box, .red-box {
+            display: inline-block;
+            width: 20px; /* 调整大小以便更好地可视化 */
+            height: 20px; /* 调整大小以便更好地可视化 */
+            margin-top: 2px;
+            margin-left: 2px;
+        }
+        .white-box {
+            background-color: white;
+        }
+        .red-box {
+            background-color: red;
+        }
+    </style>
+</head>
+<body>
+<input type="text" id="txt" placeholder="Enter a number"/><br/>
+<div id="pattern"></div>
+
+<script>
+    document.getElementById("txt").addEventListener("keydown", function(event) {
+        if (event.key === "Enter") {
+            f();
+        }
+    });
+
+    function f() {
+        var num = parseInt(document.getElementById("txt").value);
+        if (!isNaN(num)) {
+            f2(num);
+        } else {
+            alert("请输入有效的数字");
+        }
+    }
+
+    function f2(num) {
+        var patternDiv = document.getElementById("pattern");
+        patternDiv.innerHTML = ""; // 清除之前的图案
+
+        for (var i = 1; i <= num; i++) {
+            var row = document.createElement("div");
+
+            for (var a = num; a > i; a--) {
+                var whiteBox = document.createElement("span");
+                whiteBox.className = "white-box";
+                row.appendChild(whiteBox);
+            }
+
+            for (var j = 1; j <= 2 * i - 1; j++) {
+                var redBox = document.createElement("span");
+                redBox.className = "red-box";
+                row.appendChild(redBox);
+            }
+
+            patternDiv.appendChild(row);
+        }
+    }
+</script>
+</body>
+</html>
