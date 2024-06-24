@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>查找元素</title>
+</head>
+<body>
+<div>
+    <p class="p1">这是一个段落</p>
+    <p class="p1">这是一个段落1</p>
+    <p class="p1">这是一个段落2</p>
+
+</div>
+
+<button onclick="f1()">通过标签名获取元素</button>
+<button onclick="f2()">通过类名获取元素</button>
+<script>
+    function f1() {
+        var ps = document.getElementsByTagName("p");
+        for(var i = 0; i < ps.length; i++){
+            console.log(ps[i]);
+        }
+    }
+
+    function f2() {
+        var ps = document.getElementsByClassName("p1");
+        for(var i = 0; i < ps.length; i++){
+            console.log(ps[i]);
+        }
+    }
+</script>
+</body>
+</html>

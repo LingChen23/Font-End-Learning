@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<style>
+    .d1{
+        width: 200px;
+        height: 200px;
+        border: 1px solid red;
+    }
+</style>
+<body>
+<input type="text" id = "price"/><br/>
+<input type="text" id = "rate"/><br/>
+<input type="text" id = "year"/><br/>
+<button onclick="cal()">计算</button>
+
+<div id="d1" class = "d1">
+
+
+</div>
+
+<script>
+
+    function cal() {
+        var price = parseFloat(document.getElementById("price").value);
+        var rate = parseFloat(document.getElementById("rate").value);
+        var year = parseInt(document.getElementById("year").value);
+
+        var str = "";
+        //var pNode = document.getElementsByClassName("cal");
+        for(var i = 1; i <= year; i++){
+            price *= rate;
+            str += "第" + i +"年价格为：" + price + "<br/>";
+        }
+        console.log(str);
+        document.getElementById("d1").innerHTML = str;
+    }
+</script>
+</body>
+</html>

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<p id = "p1">
+    这是一个段落
+    <a href="">这是一个链接</a>
+</p>
+<button onclick="f1()">修改元素</button>
+
+<script>
+    function f1() {
+        /*
+        * innerHTML 获取标签之间的所有内容
+        * innerText 获取标签之间的文本
+        * */
+        var pNode = document.getElementById("p1");
+        //pNode.innerText= "今天是打不死会议";
+        var text = pNode.innerText;
+        var text1 = pNode.innerHTML;
+        console.log(text1);
+    }
+</script>
+</body>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>样式操作</title>
+    <style>
+        .p1{
+            color: green;
+            background-color: blue;
+            font-size: 50px;
+        }
+    </style>
+</head>
+<body>
+<p id = "p1">这是一个段落</p>
+<button onclick="fn()">样式操作</button>
+
+<script>
+    function fn() {
+        var pNode = document.getElementById("p1");
+      //  pNode.style = "color:red";
+       // pNode.style.color = "green";
+        pNode.style.fontSize="40px";
+
+        pNode.className = "p1";
+    }
+
+
+</script>
+</body>
+</html>
