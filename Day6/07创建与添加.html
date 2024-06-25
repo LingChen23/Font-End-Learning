@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id = "d1">
+    <p>这是一个段落</p>
+    <h2 id="h">标题2</h2>
+</div>
+
+<button onclick="f1()">创建、添加</button>
+<button onclick="f2()">添加按钮</button>
+
+<script>
+    function f1() {
+        //创建元素
+        var pNode = document.createElement("p");
+        pNode.innerHTML = "你好李焕英";
+
+        var div = document.getElementById("d1");
+        div.appendChild(pNode);
+
+        /**
+         * 添加到哪个元素之前
+         * 第一个元素：要添加的参数
+         * 第二个参数：参照的参数
+         * **/
+        var hNode = document.getElementById("h");
+        div.insertBefore(pNode, hNode)
+    }
+
+    function f2() {
+        var btn = document.createElement("button");
+        btn.innerHTML = "按钮";
+
+        btn.onclick = function () {
+            alert("点击事件。。。");
+        }
+
+        var div = document.getElementById("d1");
+        div.appendChild(btn);
+    }
+</script>
+</body>
+</html>

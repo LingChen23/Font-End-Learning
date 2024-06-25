@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>全选与反选</title>
+</head>
+<body>
+<input type="checkbox" class="l1"/>
+<input type="checkbox" class="l1">
+<input type="checkbox" class="l1">
+<input type="checkbox" class="l1">
+
+<button onclick="checkAll()">全选</button>
+<button onclick="invert()">反选</button>
+<script>
+    function checkAll(){
+        var chs = document.getElementsByClassName("l1");
+        //console.log(chs[0].checked);
+
+        for (var i = 0; i < chs.length; i++){
+            chs[i].checked = true;
+        }
+    }
+</script>
+</body>
+</html>

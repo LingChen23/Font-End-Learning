@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>this关键字</title>
+</head>
+<body>
+<script>
+    //this在事件中
+    function ff(a) {
+        console.log(a);
+    }
+    ff(12);
+
+    //this在函数中
+    function f1() {
+        console.log(this);
+    }
+    f1();
+
+    //单独使用this
+    console.log(this);
+
+    //this在方法中使用当前对象
+    var person = {
+        id: 1,
+        name: "zhangsan",
+        age: 12,
+        fn: function () {
+            console.log(this);
+        }
+    }
+    console.log(person.id,person.name,person.age);
+    person.fn();
+
+    function Person(id, name, age) {
+        this.id = id;
+        this.name = name;
+        this.age = age;
+    }
+    var p = new Person(1,"xiaoli", 12);
+    console.log(p.id,p.age,p.name);
+    
+</script>
+</body>
+</html>

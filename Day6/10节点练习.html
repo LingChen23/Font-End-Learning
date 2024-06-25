@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<div id = "d1">
+    <div id = "d2">
+        <input type="text"><button onclick="removeNode()">删除</button>
+    </div>
+</div>
+<button id = "d3" onclick="removeAll()">全部删除</button>
+<button onclick="add()">添加</button>
+
+<!--<div class="d2" id="d2">-->
+<!--    <button>删除</button><input>-->
+<!--</div>-->
+
+<script>
+    function add() {
+        var div = document.getElementById("d1");
+        var divNode = document.createElement("div");
+        //创建文本框
+        var inputNode = document.createElement("input");
+        inputNode.type = "text";
+
+        //创建按钮
+        var btn = document.createElement("button");
+        btn.innerHTML = "删除";
+        btn.onclick = function () {
+            var flag = confirm("是否删除");
+            if(flag){
+                btn.parentNode.remove();
+            }
+
+        }
+
+        divNode.appendChild(inputNode);
+        divNode.appendChild(btn);
+        div.appendChild(divNode);
+    }
+
+    function removeNode() {
+        var div = document.getElementById("d2");
+        var flag = confirm("是否删除");
+
+        if(flag){
+            div.remove();
+        }
+    }
+
+    function removeAll(){
+        var node = document.getElementById("d3");
+        var previous = node.previousElementSibling;
+        previous.remove();
+        console.log(previous);
+    }
+</script>
+
+</body>
+</html>

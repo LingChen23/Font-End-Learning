@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>节点删除</title>
+</head>
+<body>
+    <div id="d1">
+        <p>
+            删除节点
+        </p>
+
+        <h2 id="h2">标题2</h2>
+        <p>下午三点一楼演播厅  上职业素养课</p>
+    </div>
+
+
+    <button onclick="f1()">删除</button>
+    <button onclick="f2()">删除其本身</button>
+    <script>
+        function f1() {
+            var div = document.getElementById("d1");
+            var hNode = document.getElementById("h2");
+
+            var flag = confirm("是否删除？");
+            if(flag) {
+                div.removeChild(hNode);
+            }
+
+            
+        }
+
+
+        function f2() {
+            var hNode = document.getElementById("h2");
+            var flag = confirm("是否删除？");
+            if(flag) {
+                hNode.remove();
+            }
+           
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>购物车</title>
+    <style>
+        .t1{
+            width:500px;
+            height: 400px;
+            border: 1px solid skyblue;
+            border-collapse: collapse;
+        }
+
+        td{
+            border:1px solid blue;
+        }
+    </style>
+</head>
+<body>
+<div class="d1">
+    商品名称:<input type="text" id="name"/><br/>
+    商品价格:<input type="text" id="price"/><br/>
+    商品数量:<input type="text" id="num"/><br/>
+    <button onclick="add()">添加</button>
+</div>
+
+<table class="t1">
+    <thead>
+    <tr>
+        <td>商品名称</td>
+        <td>商品价格</td>
+        <td>商品数量</td>
+        <td>小计</td>
+        <td>操作</td>
+    </tr>
+    </thead>
+
+    <tbody id="tb"></tbody>
+</table>
+
+总价：<input type="text" id="total"/>
+
+<script>
+    function add() {
+        var name = document.getElementById("name").value;
+        var price = parseInt(document.getElementById("price").value);
+        var num = parseInt(document.getElementById("num").value);
+
+        //创建tr
+        var tr = document.createElement("tr");
+
+        //创建第一个单元格
+        var td1 = document.createElement("td");
+        td1.innerHTML = name;
+        //创建第二个单元格
+        var td2 = document.createElement("td");
+        td2.innerHTML = price;
+        //创建第三个单元格
+        var td3 = document.createElement("td");
+        //创建减少按钮
+        var subBtn = document.createElement("button");
+        subBtn.innerHTML = "-";
+        subBtn.onclick = sub;
+        //创建数量的文本框
+        var inputNum = document.createElement("input");
+        inputNum.value = num;
+        inputNum.style = "display:inline-block;width:30px;border:0px solid red";
+        inputNum.onchange = changeNum;
+        //创建增加按钮
+        var addBtn = document.createElement("button");
+        addBtn.innerHTML = "+";
+        addBtn.onclick = additionNum;
+
+        td3.appendChild(subBtn);
+        td3.appendChild(inputNum);
+        td3.appendChild(addBtn);
+
+        //创建第四个单元格
+        var td4 = document.createElement("td");
+        td4.innerHTML = price * num;
+        //创建第五个单元格
+        var td5 = document.createElement("td");
+
+        // 创建删除按钮
+        var removeBtn = document.createElement("button");
+        removeBtn.innerHTML = "删除";
+        removeBtn.onclick = del;
+        td5.appendChild(removeBtn);
+
+
+        tr.appendChild(td1);
+        tr.appendChild(td2);
+        tr.appendChild(td3);
+        tr.appendChild(td4);
+        tr.appendChild(td5);
+
+        var tb = document.getElementById("tb");
+        tb.appendChild(tr);
+
+        cal();
+    }
+
+
+    //手动修改数量的处理办法
+    function changeNum() {
+        var val = parseInt(this.value);
+        if(val > 20)
+            val = 20;
+        if(val < 1)
+            val = 1;
+        this.value = val;
+        cal()
+    }
+
+    // 减法
+    function sub() {
+        var inputNum = this.nextElementSibling;
+        var val = parseInt(inputNum.value);
+        if(val > 1)
+            val--;
+        else
+            alert("不能再少了");
+        inputNum.value = val;
+        cal();
+
+    }
+
+    //加法
+    function additionNum() {
+        var inputNum = this.previousElementSibling;
+        var val = parseInt(inputNum.value);
+        if(val < 20)
+            val++;
+        else
+            alert("不能再多了");
+        inputNum.value = val;
+
+        cal();
+
+    }
+
+    //删除
+    function del() {
+        var tr = this.parentNode.parentNode;
+        var flag = confirm("是否删除");
+        if(flag) {
+            tr.remove();
+        }
+
+        cal();
+    }
+
+    //计算小计
+    function cal() {
+        var total = 0;
+        var tb = document.getElementById("tb");
+        var trs = tb.getElementsByTagName("tr");
+        for(var i = 0; i < trs.length; i++) {
+            var tr = trs[i];
+            var price = parseInt(tr.children[1].innerHTML);
+            var num = parseInt(tr.children[2].children[1].value);
+            var result = price * num;
+            tr.children[3].innerHTML = result;
+            total += result;
+        }
+
+        document.getElementById("total").value = total;
+    }
+</script>
+</body>
+</html>

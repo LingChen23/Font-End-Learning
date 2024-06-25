@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>节点查找</title>
+</head>
+<body>
+    <div class="d1" id="d1">
+        <p>这是一个段落</p>
+        <div id="d2">Hello Div</div>
+        <p>不要在群里说话了。。。</p>
+    </div>
+
+
+    <button onclick="f1()">子节点查找</button>
+
+    <button onclick="f2()">父节点</button>
+
+
+    <button onclick="f3()">兄弟节点</button>
+
+
+    <script>
+        function f1() {
+            var div = document.getElementById("d1");
+            //var nodes = div.childNodes;
+            var nodes = div.children;
+            console.log(nodes);
+            //获取第一个子节点   包含空白节点
+            //var node = div.firstChild
+              //获取第一个子节点   不包含空白节点
+            // var node = div.firstElementChild;
+            // 获取最后一个节点  
+            var node = div.lastElementChild;
+            console.log(node.innerHTML);
+        }
+
+
+        function f2() {
+            var divNode = document.getElementById("d2");
+            var parent = divNode.parentNode;
+            console.log(parent);
+        }
+
+
+        function f3() {
+            var divNode = document.getElementById("d2");
+            //获取下一个兄弟节点
+            // var next = divNode.nextElementSibling;
+            // console.log(next.innerHTML);
+            // 获取上一个兄弟节点
+            var previous = divNode.previousElementSibling;
+            console.log(previous);
+            
+        }
+    </script>
+</body>
+</html>
