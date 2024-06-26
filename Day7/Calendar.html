@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calendar</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f0f0f0;
+            font-family: Arial, sans-serif;
+        }
+
+        .calendar {
+            background-color: #fff;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            padding: 20px;
+            text-align: center;
+            width: 300px;
+        }
+
+        .calendar .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            /* margin-bottom: 10px; */
+        }
+
+        .calendar .days {
+            /* outline: 1px solid #ccc; */
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            /* justify-content: space-around; */
+            margin-bottom: 10px;
+
+        }
+        .calendar .day {
+            /* margin-left: 10px; */
+            /* text-align: center; */
+            width: 30px;
+            height: 30px;
+            line-height: 30px;
+            border: 1px solid #ccc;
+            /* border-radius: 50%; */
+        }
+        .calendar .day:first-child {
+            margin-left: 0px;
+        }
+
+        .calendar .dates {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            gap: 5px;
+        }
+        .calendar .dates .date:hover{
+            background-color: #f0f0f0;
+        }
+
+        .calendar .dates .date {
+            width: 30px;
+            height: 30px;
+            line-height: 30px;
+            text-align: center;
+            border: 1px solid #ccc;
+            cursor: pointer;
+        }
+
+        .calendar .dates .date.today {
+            background-color: #eafde4;
+        }
+
+        .calendar .dates .date.disabled {
+            color: #ccc;
+            pointer-events: none;
+        }
+        .calendar #display {
+            margin-top: 10px;
+        }
+        .calendar #display input {
+            text-align: center;
+            width: 1fr;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+    </style>
+</head>
+<body>
+    <div class="calendar">
+        <div class="header">
+            <button id="prev-year">&lt;&lt;</button>
+            <button id="prev-month">&lt;</button>
+            <h2 id="current-month-year"></h2>
+            <button id="next-month">&gt;</button>
+            <button id="next-year">&gt;&gt;</button>
+        </div>
+        <div class="days">
+            <div class="day">日</div>
+            <div class="day">一</div>
+            <div class="day">二</div>
+            <div class="day">三</div>
+            <div class="day">四</div>
+            <div class="day">五</div>
+            <div class="day">六</div>
+        </div>
+        <div class="dates" id="dates-container"></div>
+        <div id="display"><input type="text" readonly></div>
+    </div>
+    <script>
+        // 初始化当前日期、月份和年份
+        var currentDate = new Date();
+        var currentMonth = currentDate.getMonth();
+        var currentYear = currentDate.getFullYear();
+
+        // 月份名称数组
+        const monthNames = [
+            "1月", "2月", "3月", "4月", "5月", "6月",
+            "7月", "8月", "9月", "10月", "11月", "12月"
+        ];
+
+        // 获取指定月份的天数
+        const daysInMonth = (month, year) => {
+            // console.log(new Date(year, month + 1, 0).getDate());   
+            return new Date(year, month + 1, 0).getDate();
+        };
+
+        // 渲染日历
+        const renderCalendar = () => {
+            // 获取当前月份的第一天的星期几
+            const firstDayOfMonth = new Date(currentYear, currentMonth, 1).getDay();
+            // 获取当前月份的总天数
+            const totalDays = daysInMonth(currentMonth, currentYear);
+
+            // 更新当前月份和年份的显示
+            document.getElementById('current-month-year').textContent = currentYear + " 年 " + currentMonth + " 月";
+
+            // 获取日期容器的元素
+            var datesContainer = document.getElementById('dates-container');
+            // 清空日期容器的内容
+            datesContainer.innerHTML = '';
+
+            // 添加上个月最后几天的日期
+            for (var i = firstDayOfMonth - 1; i >= 0; i--) {
+                var dateElement = document.createElement('div');
+                dateElement.classList.add('date', 'disabled');
+                dateElement.textContent = daysInMonth(currentMonth - 1, currentYear) - i;
+                datesContainer.appendChild(dateElement);
+            }
+
+            // 添加当前月份的日期
+            for (var i = 1; i <= totalDays; i++) {
+                var dateElement = document.createElement('div');
+                dateElement.classList.add('date');
+                dateElement.textContent = i;
+                dateElement.onclick = function() {
+                    var display = document.getElementById('display').firstChild;
+                    display.value = currentYear + " 年 " + currentMonth + " 月 " + this.textContent + " 日";
+                }
+                datesContainer.appendChild(dateElement);
+            }
+
+            // 添加下个月开始的几天以填充日历
+            var nextMonthDays = 7 - (datesContainer.children.length % 7);
+            for (var i = 1; i <= nextMonthDays; i++) {
+                var dateElement = document.createElement('div');
+                dateElement.classList.add('date', 'disabled');
+                dateElement.textContent = i;
+                datesContainer.appendChild(dateElement);
+            }
+
+            // 获取今天的日期
+            var today = new Date();
+            // 如果当前月份和年份与今天相同，则标记今天的日期
+            if (currentMonth === today.getMonth() && currentYear === today.getFullYear()) {
+                var todayDateElement = datesContainer.querySelector(`.date:nth-child(${today.getDate() + firstDayOfMonth})`);
+                todayDateElement.classList.add('today');
+            }
+        };
+
+        // 上个月
+        document.getElementById('prev-month').addEventListener('click', () => {
+            if (currentMonth === 0) {
+                currentMonth = 11;
+                currentYear--;
+            } else {
+                currentMonth--;
+            }
+            renderCalendar();
+        });
+
+        // 下个月
+        document.getElementById('next-month').addEventListener('click', () => {
+            if (currentMonth === 11) {
+                currentMonth = 0;
+                currentYear++;
+            } else {
+                currentMonth++;
+            }
+            renderCalendar();
+        });
+
+        // 上一年
+        document.getElementById('prev-year').addEventListener('click', () => {
+            currentYear--;
+            renderCalendar();
+        });
+
+        // 下一年
+        document.getElementById('next-year').addEventListener('click', () => {
+            currentYear++;
+            renderCalendar();
+        });
+
+        // 初始渲染日历
+        renderCalendar();
+    </script>
+</body>
+</html>

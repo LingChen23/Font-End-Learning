@@ -65,6 +65,14 @@
             }
         }
 
+        // 补充最后一行的空单元格
+        var lastDay = (days + firstDay) % 7;
+        if (lastDay != 0) {
+            for (var i = lastDay; i < 7; i++) {
+                calendar += "<td></td>";
+            }
+        }
+
         calendar += "</tr></table>";
         document.getElementById("calendar").innerHTML = calendar;
     }
