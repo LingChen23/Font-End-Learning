@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="4f600683-3b60-4501-b3fe-d80630c0c169" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/dataSources/b0cd7e77-2e77-4dfc-b025-43a691dcc3fc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/dataSources/b0cd7e77-2e77-4dfc-b025-43a691dcc3fc/storage_v2/_src_/schema/test.kkQ2AA.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/mySql.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../project/untitled3/src/main/java/com/tentact/servlet/JDBCServlet.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../project/untitled3/src/main/java/com/tentact/servlet/RegistServlet.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../project/untitled3/src/main/java/com/tentact/util/JDBCTools.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../project/untitled3/src/main/webapp/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../project/untitled3/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../project/untitled3/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../project/untitled3/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../project/untitled3/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../project/untitled3/src/main/java/com/tentact/servlet/HelloServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/../project/untitled3/src/main/java/com/tentact/servlet/HelloServlet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../project/untitled3/src/main/webapp/WEB-INF/web.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../project/untitled3/src/main/webapp/WEB-INF/web.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../project/untitled3/src/main/webapp/index.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/../project/untitled3/src/main/webapp/index.jsp" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;customColor&quot;: &quot;&quot;,
+  &quot;associatedIndex&quot;: 3
+}</component>
+  <component name="ProjectId" id="2iPCUZK0B16haFMjFuTXonabjRv" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenDatabaseViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "git-widget-placeholder": "main",
+    "last_opened_file_path": "C:/Users/16672",
+    "settings.editor.selected.configurable": "preferences.lookFeel"
+  },
+  "keyToStringList": {
+    "DatabaseDriversLRU": [
+      "mysql_aurora_aws",
+      "mysql"
+    ]
+  }
+}]]></component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+</project>
