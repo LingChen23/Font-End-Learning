@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>一次性定时器</title>
+</head>
+<body>
+<button onclick="start()">5秒之后弹出HelloWorld</button>
+<button onclick="stop()">停止弹出</button>
+<script>
+    function fn() {
+        //alert("Hello World!");
+        window.open("http://www.baidu.com");
+    }
+
+    function stop() {
+        //关闭一次性定时器
+        clearTimeout(flag);
+    }
+
+    var flag;
+    function start() {
+        flag = setTimeout(fn, 5000);
+    }
+</script>
+</body>
+</html>

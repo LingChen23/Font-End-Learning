@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Date对象</title>
+    <style>
+        table {
+            border-collapse: collapse;
+            width: 50%;
+        }
+        th, td {
+            border: 1px solid black;
+            text-align: center;
+            padding: 8px;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+<body>
+<label for="year">年:</label>
+<input type="number" id="year" value="2023">
+<label for="month">月:</label>
+<input type="number" id="month" value="4" min="1" max="12">
+<button onclick="generateCalendar()">生成日历</button>
+<br/><br/>
+<div id="calendar"></div>
+
+<script>
+    function getDays(year, month) {
+        if (month == 1 || month == 3 || month == 5 || month == 7 || month == 8 || month == 10 || month == 12) {
+            return 31;
+        } else if (month == 4 || month == 6 || month == 9 || month == 11) {
+            return 30;
+        } else {
+            if (year % 400 == 0 || (year % 4 == 0 && year % 100 != 0)) {
+                return 29;
+            } else {
+                return 28;
+            }
+        }
+    }
+
+    function generateCalendar() {
+        var year = document.getElementById("year").value;
+        var month = document.getElementById("month").value;
+        var days = getDays(year, month);
+        var calendar = "<table><tr>" +
+            "<th>日</th><th>一</th><th>二</th><th>三</th><th>四</th><th>五</th><th>六</th></tr><tr>";
+
+        var date = new Date(year, month - 1, 1);
+        var firstDay = date.getDay();
+
+        for (var i = 0; i < firstDay; i++) {
+            calendar += "<td></td>";
+        }
+
+        for (var i = 1; i <= days; i++) {
+            calendar += "<td>" + i + "</td>";
+            if ((i + firstDay) % 7 == 0) {
+                calendar += "</tr><tr>";
+            }
+        }
+
+        calendar += "</tr></table>";
+        document.getElementById("calendar").innerHTML = calendar;
+    }
+
+    // 初始生成当前日期的日历
+    generateCalendar();
+</script>
+</body>
+</html>

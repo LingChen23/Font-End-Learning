@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>简易日历</title>
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th, td {
+            border: 1px solid #000;
+            width: 14.28%;
+            height: 50px;
+            text-align: center;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+<body>
+<label for="year">选择年份:</label>
+<input type="number" id="year" value="2023" min="1900" max="2100">
+<label for="month">选择月份:</label>
+<input type="number" id="month" value="4" min="1" max="12">
+<button onclick="generateCalendar()">生成日历</button>
+
+<table id="calendar">
+    <thead>
+    <tr>
+        <th>日</th>
+        <th>一</th>
+        <th>二</th>
+        <th>三</th>
+        <th>四</th>
+        <th>五</th>
+        <th>六</th>
+    </tr>
+    </thead>
+    <tbody id="calendar-body">
+    </tbody>
+</table>
+
+<script>
+    function generateCalendar() {
+        var year = document.getElementById('year').value;
+        var month = document.getElementById('month').value - 1; // 月份从0开始
+        var firstDay = new Date(year, month, 1).getDay();
+        var daysInMonth = new Date(year, month + 1, 0).getDate();
+
+        var calendarBody = document.getElementById('calendar-body');
+        calendarBody.innerHTML = ''; // 清空之前的内容
+
+        var row = document.createElement('tr');
+        for (var i = 0; i < firstDay; i++) {
+            var cell = document.createElement('td');
+            row.appendChild(cell);
+        }
+
+        for (var day = 1; day <= daysInMonth; day++) {
+            if (row.children.length == 7) {
+                calendarBody.appendChild(row);
+                row = document.createElement('tr');
+            }
+            var cell = document.createElement('td');
+            cell.textContent = day;
+            row.appendChild(cell);
+        }
+
+        if (row.children.length > 0) {
+            calendarBody.appendChild(row);
+        }
+    }
+
+    // 初始生成当前月份的日历
+    generateCalendar();
+</script>
+</body>
+</html>

@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        input{
+            width: 200px;
+            height: 15px;
+            margin: 5px;
+        }
+        button{
+            width: 40px;
+            height: 30px;
+            background-color: aquamarine;
+            margin: 5px;
+        }
+    </style>
+</head>
+<body>
+<div>
+    <input type="text" id="txt" value="0"/>
+    <br/>
+    <button onclick="getNum(this)">1</button>
+    <button onclick="getNum(this)">2</button>
+    <button onclick="getNum(this)">3</button>
+    <button onclick="getNum(this)">4</button>
+    <br/>
+    <button onclick="getNum(this)">5</button>
+    <button onclick="getNum(this)">6</button>
+    <button onclick="getNum(this)">7</button>
+    <button onclick="getNum(this)">8</button>
+    <br/>
+    <button onclick="getNum(this)">9</button>
+    <button onclick="getNum(this)">0</button>
+    <button onclick="getNum(this)">+</button>
+    <button onclick="getNum(this)">-</button>
+    <br/>
+    <button onclick="getNum(this)">=</button>
+    <button onclick="getNum(this)">C</button>
+    <button onclick="getNum(this)">DEL</button>
+    <button onclick="getNum(this)">&nbsp</button>
+    <br/>
+</div>
+
+<script>
+    var arr = new Array();
+    var fuhao = new Array();
+    var result = 0;
+    function getNum(btn) {
+        var num = btn.innerHTML;
+        if(!isNaN(num)){
+            //每次录入大胡子的时候需要把之前文本框中数字取出来
+            var temp = document.getElementById("txt").value;
+            //
+            var n = temp + num;
+            //把拼接起来的数字放回文本框
+            document.getElementById("txt").value = num;
+        } else {
+            if(num == "+" || num == "-"){
+                fuhao.push(num);
+            }else if(num == "="){
+                if(fuhao[0] == "+"){
+                    for(var i = 0; i < arr.length; i++){
+                        result+=parseInt(arr[i]);
+                    }
+                } else if(fuhao[0] == "-"){
+                    result = parseInt(arr[0]) - parseInt(arr[1]);
+                }
+
+                document.getElementById("txt").value = result;
+                //清空保存数字以及符号的数组
+                arr = new Array();
+                fuhao = new Array();
+
+                //把result置为0
+                result = 0;
+            }
+        }
+
+        console.log(arr);
+        console.log(fuhao);
+    }
+</script>
+</body>
+</html>

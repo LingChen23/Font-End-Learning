@@ -2,25 +2,36 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>全选与反选</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>全选反选</title>
 </head>
 <body>
-<input type="checkbox" class="l1"/>
-<input type="checkbox" class="l1">
-<input type="checkbox" class="l1">
-<input type="checkbox" class="l1">
+    <input type="checkbox" class="l1"/>
+    <input type="checkbox" class="l1"/>
+    <input type="checkbox" class="l1"/>
+    <input type="checkbox" class="l1"/>
 
-<button onclick="checkAll()">全选</button>
-<button onclick="invert()">反选</button>
-<script>
-    function checkAll(){
-        var chs = document.getElementsByClassName("l1");
-        //console.log(chs[0].checked);
+    <button onclick="checkAll()">全选</button>
+    <button onclick="invert()">反选</button>
 
-        for (var i = 0; i < chs.length; i++){
-            chs[i].checked = true;
+    <script>
+        function checkAll() {
+            var chs = document.getElementsByClassName("l1");
+           
+            for(var i = 0; i < chs.length; i++) {
+                chs[i].checked = true
+            }
         }
-    }
-</script>
+
+
+        function invert() {
+            var chs = document.getElementsByClassName("l1");
+           
+           for(var i = 0; i < chs.length; i++) {
+               chs[i].checked = false;
+           }
+        }
+    </script>
 </body>
 </html>

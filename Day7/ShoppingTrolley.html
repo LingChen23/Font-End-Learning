@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ShoppingTrolley</title>
+    <style>
+        *{
+            margin: 0px;
+        }
+        .h4{
+            display: inline-block;
+        }
+        #shopingMenu{
+            display: grid;
+            grid-row: repeat(3, 1fr);
+            gap: 10px;
+            width: 300px;
+            outline: 1px solid #ccc;
+            position: fixed;
+            left: 500px;
+            background-color: white;
+            border-radius: 20px;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+
+        #shopingMenu span{
+            justify-items: stretch;
+        }
+        #shopingMenu input{
+            width: 100%;
+        }
+        #trolley{
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            border-radius: 20px;
+            margin-top: 10px;
+            outline: 3px solid purple;
+            text-align: center;
+        }
+        #trolley thead{
+            font-weight: bold;
+        }
+        #trolley td{
+            border-radius: 5px;
+            border: 1px solid plum;
+            padding: 5px;
+        }
+        #trolley tbody{
+
+            height: 40px;
+        }
+
+        #totalTr{
+            border-radius: 5px;
+            font-weight: bold;
+            outline: 1px solid plum;
+        }
+        #totalTr td{
+            border: none;
+            padding: 10px;
+        }
+        #totalTr:first-child{
+            text-align: left;
+        }
+    </style>
+</head>
+<body>
+    <div id="shopingMenu">
+        <span><h4 class="h4">商品名称：</h4><input type="text" id="name" value="1"></span>
+        <span><h4 class="h4">商品价格：</h4><input type="text" id="price" value="1"></span>
+        <span><h4 class="h4">商品数量：</h4><input type="text" id="num" value="1"></span>
+        <button id="addBtn" onclick="add()">添加</button>
+    </div>
+
+    <table id="trolley">
+        <thead>
+            <tr>
+                <td>商品名称</td>
+                <td>商品价格</td>
+                <td>商品数量</td>
+                <td>小计</td>
+                <td><input type="checkbox" id="selectAll" onchange="selectAll()"></td>
+            </tr>
+        </thead>
+        <tbody id="trolleyBody"></tbody>
+        </tbody>
+        <tr id="totalTr">
+            <td colspan="3">总计：</td>
+            <td id="totalPrice">0</td>
+            <td id="removeAll"><button onclick="removeSelected()">删除选中</button></td>
+        </tr>
+    </table>
+    <br>
+   
+
+    <script>
+        // 添加商品到购物车
+        function add(){
+            var name = document.getElementById("name");
+            var price = document.getElementById("price");
+            var num = document.getElementById("num");
+
+            var newtr = document.createElement("tr");
+
+            // 商品名
+            var tdName = document.createElement("td");
+            tdName.innerHTML = name.value;
+
+            // 商品价格
+            var tdPrice = document.createElement("td");
+            tdPrice.innerHTML = price.value;
+            
+            // 商品数量
+            // 创建一个用于显示数量的单元格
+            var tdNum = document.createElement("td");
+            // 创建一个增加数量的按钮
+            var btnAdd = document.createElement("button");
+            // 创建一个用于输入数量的文本框
+            var textNum = document.createElement("input");
+            // 创建一个减少数量的按钮
+            var btnSub = document.createElement("button");
+
+            textNum.type = "text";
+            textNum.style.width = "30px";
+            textNum.value = num.value;
+            // +按钮
+            btnAdd.innerHTML = "+";
+            btnAdd.onclick = function(){
+                textNum.value = parseInt(textNum.value) + 1;
+                tdTotalPrice.innerHTML =  parseInt(textNum.value) * parseInt(tdPrice.innerHTML);
+                calculateTotalPrice();
+            }
+            // 设置文本框的失去焦点事件
+            textNum.onblur = function(){
+                tdTotalPrice.innerHTML =  parseInt(textNum.value) * parseInt(tdPrice.innerHTML);
+                calculateTotalPrice();
+            }
+
+            // -按钮
+            btnSub.innerHTML = "-";
+            btnSub.onclick = function(){
+                textNum.value = parseInt(textNum.value) - 1;
+                if(textNum.value < 1){
+                    textNum.value = 1;
+                    alert("商品数量不能小于1");
+                }
+                tdTotalPrice.innerHTML =  parseInt(textNum.value) * parseInt(tdPrice.innerHTML);
+                calculateTotalPrice();
+            }
+
+            tdNum.appendChild(btnAdd);
+            tdNum.appendChild(textNum);
+            tdNum.appendChild(btnSub);   
+
+            // 小计
+            var tdTotalPrice = document.createElement("td");
+            tdTotalPrice.innerHTML = num.value * price.value;
+
+            // // 删除
+            // var tdDelete = document.createElement("td");
+            // var btnDelete = document.createElement("button");
+            // btnDelete.innerHTML = "删除";
+            // btnDelete.onclick = function(){
+            //     var flag = confirm("确认删除?");
+            //     if(flag){
+            //     newtr.remove();
+            //     calculateTotalPrice();
+            //     }
+            // }
+            // tdDelete.appendChild(btnDelete);
+
+            // 选择框
+            var tdSelect = document.createElement("td");
+            var checkbox = document.createElement("input");
+            checkbox.type = "checkbox";
+            checkbox.className = "select";
+            checkbox.onchange = function(){
+                if(!checkbox.checked){
+                    var selectAll = document.getElementById("selectAll");
+                    selectAll.checked = false;
+                }
+            }
+            tdSelect.appendChild(checkbox);
+
+            newtr.appendChild(tdName);
+            newtr.appendChild(tdPrice);
+            newtr.appendChild(tdNum);
+            newtr.appendChild(tdTotalPrice);
+            // newtr.appendChild(tdDelete);
+            newtr.appendChild(tdSelect);
+
+            var trolley = document.getElementById("trolleyBody");
+            trolley.appendChild(newtr);
+            calculateTotalPrice();
+        }
+
+        function selectAll(){
+            var selectAll = document.getElementById("selectAll");
+            var trolley = document.getElementById("trolleyBody");
+            var tr = trolley.firstElementChild;
+            while(tr){
+                tr.cells[4].firstChild.checked = selectAll.checked;
+                tr = tr.nextElementSibling;
+            }
+        }
+
+        // 删除购物车中的所有商品
+        function removeAll(){
+            var trolley = document.getElementById("trolleyBody");
+            var tr = trolley.firstElementChild;
+            while(tr){
+                tr.remove();
+                tr = trolley.firstElementChild;
+            }
+            calculateTotalPrice();
+        }
+
+        function removeSelected(){
+            var selected = document.getElementsByClassName("select");
+            for(var i=selected.length-1;i>=0;i--){
+                if(selected[i].checked){
+                    selected[i].parentNode.parentNode.remove();
+                }
+            }
+            calculateTotalPrice();
+            var selectAll = document.getElementById("selectAll");
+            selectAll.checked = false;
+        }
+
+        // 计算购物车中所有商品的总价
+        function calculateTotalPrice(){
+            var trolley = document.getElementById("trolleyBody");
+            var tr = trolley.firstElementChild;
+            var totalPrice = 0;
+            while(tr){
+                totalPrice += parseInt(tr.cells[3].innerHTML);
+                tr = tr.nextElementSibling;
+            }
+            document.getElementById("totalPrice").innerHTML = totalPrice;
+        }
+    </script>
+</body>
+</html>

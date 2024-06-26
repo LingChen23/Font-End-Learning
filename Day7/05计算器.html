@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>简易计算器</title>
+    <style>
+        .calculator {
+            display: inline-block;
+            border: 1px solid #000;
+            padding: 10px;
+        }
+        .display {
+            width: 100%;
+            height: 30px;
+            margin-bottom: 10px;
+        }
+        .buttons {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 5px;
+        }
+        .buttons button {
+            height: 40px;
+        }
+    </style>
+</head>
+<body>
+<div class="calculator">
+    <input type="text" class="display" id="display" readonly>
+    <div class="buttons">
+        <button onclick="appendNumber('1')">1</button>
+        <button onclick="appendNumber('2')">2</button>
+        <button onclick="appendNumber('3')">3</button>
+        <button onclick="appendOperator('+')">+</button>
+        <button onclick="appendNumber('4')">4</button>
+        <button onclick="appendNumber('5')">5</button>
+        <button onclick="appendNumber('6')">6</button>
+        <button onclick="appendOperator('-')">-</button>
+        <button onclick="appendNumber('7')">7</button>
+        <button onclick="appendNumber('8')">8</button>
+        <button onclick="appendNumber('9')">9</button>
+        <button onclick="clearDisplay()">C</button>
+        <button onclick="appendNumber('0')">0</button>
+        <button onclick="deleteLast()">DEL</button>
+        <button onclick="calculate()">=</button>
+    </div>
+</div>
+<script>
+    function appendNumber(number) {
+        document.getElementById('display').value += number;
+    }
+
+    function appendOperator(operator) {
+        document.getElementById('display').value += ' ' + operator + ' ';
+    }
+
+    function clearDisplay() {
+        document.getElementById('display').value = '';
+    }
+
+    function deleteLast() {
+        let display = document.getElementById('display');
+        display.value = display.value.slice(0, -1);
+    }
+
+    function calculate() {
+        let display = document.getElementById('display');
+        try {
+            display.value = eval(display.value.replace(/ /g, ''));
+        } catch (e) {
+            display.value = '错误';
+        }
+    }
+</script>
+</body>
+</html>
